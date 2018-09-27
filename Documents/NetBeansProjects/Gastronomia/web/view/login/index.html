@@ -1,0 +1,49 @@
+<%@page import="java.sql.*, java.io.*, java.util.*, javax.servlet.*" contentType="text/html" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Tabelas do Login</title>
+    </head>
+    <body>
+        <div class='container'>              
+            <h1>Cardapio</h1>
+            <h2>Itens do Cardápio</h2>            
+            <table class='table table-bordered table-striped table-hover'>
+                <tr>
+                    <th>Ação</th>
+                    <th>Id_login</th>
+                    <th>Nome</th>
+                </tr>
+                    <%
+                        while (rs.next())
+                        {  
+                    %>
+                        <tr>
+                            <td>
+                                <a class='btn' href='../src/java/model/'>Alterar</a>
+                                <a class='btn' href='../Gastronomia/InsertCardapio.jsp'>Excluir</a>
+                            </td>
+                            <td>
+                                <%
+                                    out.println(rs.getInt("id_login"));
+                                %>
+                            </td>
+                            <td>
+                                <%
+                                    out.println(rs.getString("nome"));
+                                %>
+                            </td>
+                        </tr>
+                <%
+                    }
+                    st.close();
+                %>
+            </table>
+            <form>
+                <a class='btn' href='formulario.html'>Inserir</a>
+            </form>                    
+        </div>
+    </body>
+</html>
