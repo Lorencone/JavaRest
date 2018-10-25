@@ -2,10 +2,13 @@ package br.iesb.poo2.rest;
 
 import java.util.Date;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 @Path("msg")
@@ -15,14 +18,14 @@ public class Mensagens {
     @Path("teste01")
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String doTeste01() {
-        return "Resposta em txt RESTFUll, O tempo agora é "+ tempo;
+    public String doTeste01(@QueryParam("rest") int a, @QueryParam("xp") int b) {
+        return "Resposta em txt RESTFUll Soma dos parametros e "+ (a+b) + ", O tempo agora e "+ tempo;
     }
     
     @Path("teste02")
-    @GET
+    @POST
     @Produces(MediaType.TEXT_XML)
-    public String doTeste02() {
+    public String doTeste02(@FormParam("ad") int c, @FormParam("jk") int d) {
         return "<?xml version=\"1.0\"?>" + "<hello> Formato xml" +tempo+ "</hello>";       
     }
     
